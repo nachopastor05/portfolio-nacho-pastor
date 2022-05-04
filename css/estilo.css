@@ -376,7 +376,7 @@ input::placeholder,textarea::placeholder{ /* Le doy un color y opacidad al 50% a
 		width: 80%;
 	}
 	.galeria{ /* Cambio el número de columnas de la galería de la página "Proyectos" */
-	grid-template-columns: repeat(3, auto);
+		grid-template-columns: repeat(3, auto);
 	}
 	.galeria h3{
 		font-size: 3vw; /* Cambio el tamaño de letra */
@@ -392,7 +392,7 @@ input::placeholder,textarea::placeholder{ /* Le doy un color y opacidad al 50% a
 	header nav{ /* Cambio el estilo del navegador del header para el menú hamburguesa */
 		position: fixed;
 		top: 0;
-		right: -258.66px; /* Escondo a la derecha el menú */
+		right: -100%; /* Escondo a la derecha el menú */
 		padding: 90px 80px 100vh 50px;
 		background-color: #eee;
 		transition: right 0.8s; /* Establezco un tiempo de 0.8s para cuando la propiedad "rigth" cambie a 0 en la siguiente regla ".desplegado" */
