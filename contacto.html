@@ -1,0 +1,65 @@
+<!-- Todo lo relacionado con el head, el header y el footer esta explicado en el archivo "index.html", ya que es el mismo para todas las páginas -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Para poder realizar el responsive -->
+	<title>Proyecto</title>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css"> <!-- Conexión del HTML con el archivo de estilos CSS -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header> <!-- Este es el header de la web, dónde se encuentran el logotipo (insertado mediante una imagen) y el menú de navegación, que se hace responsive convirtiéndose en menú de hamburguesa -->
+		<a href="index.html"><img src="img/logo.png"></a> <!-- Logotipo -->
+		<a href="#" class="abrir"> <!-- Botón hamburguesa -->
+			<span></span>
+			<span></span>
+			<span></span>
+		</a>
+		<nav> <!-- Menú navegación -->
+			<a href="#" class="cerrar">x</a> <!-- Botón de cerrar el menú cuando está responsive -->
+			<ul> <!-- Lista con enlaces a las páginas de la web -->
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="sobre-mi.html">Sobre Mí</a></li>
+				<li><a href="proyectos.html">Proyectos</a></li>
+				<li><a href="contacto.html" class="activa">Contacto</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section class="seccion4-inicio"> <!-- 4ª sección de la página "Inicio" -->
+		<h2>¡Cuéntame tu idea!</h2> <!-- Título de la sección -->
+		<form action="#" method="GET"> <!-- Formulario de contacto -->
+			<input type="text" name="nombre" placeholder="Nombre"> <!-- Celda de texto para poner el nombre -->
+			<input type="text" name="apellidos" placeholder="Apellidos"> <!-- Celda de texto para poner los apellidos -->
+			<input type="text" name="correo" placeholder="E-Mail"> <!-- Celda de texto para ponerl el e-mail -->
+			<textarea name="mensaje" placeholder="Mensaje" rows="5"></textarea> <!-- Celda de texto más grande para escribir el mensaje -->
+			<input type="submit" value="Enviar" class="boton"> <!-- Botón de enviar formulario (no funcionable). Le he puesto la clase "boton" para que tenga el mismo aspecto que el botón de la sección 1 -->
+		</form>
+	</section>
+	<footer> <!-- Este es el footer de la web, dónde se encuentran el menú de navegación, iconos de redes sociales y los datos de contacto -->
+		<nav> <!-- Menú navegación -->
+			<ul> <!-- Lista con enlaces a las páginas de la web -->
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="sobre-mi.html">Sobre Mí</a></li>
+				<li><a href="proyectos.html">Proyectos</a></li>
+				<li><a href="contacto.html" class="activa">Contacto</a></li>
+			</ul>
+		</nav>
+		<div class="redes"> <!-- Iconos de las redes sociales -->
+			<a href="#"><img src="img/instagram.png"></a>
+			<a href="#"><img src="img/linkedin.png"></a>
+			<a href="#"><img src="img/facebook.png"></a>
+		</div>
+		<div class="contacto"> <!-- Widget de datos de contacto -->
+			<h3>Contacto</h3> <!-- Título del widget -->
+			<p><span>E-mail</span><br>nachopastor05@gmail.com</p> <!-- He puesto la etiqueta "span" en los tres párrafos para poner en negrita lo que haya dentro. La etiqueta "br" es para hacer un salto de línea -->
+			<p><span>Tel</span><br>+34 695 80 77 82</p>
+			<p><span>Dirección</span><br>C/ Fuente de San Isidro, 5
+		</div>
+	</footer>
+
+	<script src="js/funciones.js"></script> <!-- Conexión del HTML con el archivo de funciones JS -->
+</body>
+</html>

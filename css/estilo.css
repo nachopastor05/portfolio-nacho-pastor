@@ -1,0 +1,504 @@
+*{ /* Estilo para comenzar el diseño sin margenes ni paddings en la página */
+	margin: 0;
+	padding: 0;
+}
+
+/* General para todas las páginas. */
+
+html,body{ /* Este código es para arreglar un problema que se genera cuando inspecciono en el navegador. El problema consiste en que se me genera una franja blanca a la derecha cuando redimensiono la pantalla */
+	width: 100%;
+	overflow-x: hidden;
+}
+body{
+	display: flex; /* Propiedad para maquetar el  contenido de las páginas */
+	flex-direction: column; /* Cambio la dirección de FLEX para que el contenido fluya verticalmente */
+	font-family: monospace; /* Determino la tipografía para mi contenido */
+	margin-top: 70px; /* Pongo un margen superior igual a la altura del header ya que, el header, al estar en "position: fixed;", se superpone al contenido del body */
+}
+h1,h2,h3,h4,h5,h6{ /* Determino tipografía y el color para los títulos */
+	font-family: 'Montserrat', sans-serif;
+	color: #2F2F30;
+}
+p,li{ /* Determino el color para los párrafos */
+	color: #2F2F30;	
+}
+h2{ /* Defino las propiedades para el H2 ya que será usado para el título de las secciones */
+	font-size: 1.8em; /* Cambio el tamaño de letra */
+	text-transform: uppercase; /* Pongo todo el texto en mayúsculas, independientemente de como esté escrito en el documento HTML */
+	text-align: center; /* Alineo el título al centro */
+	margin-bottom: 60px; /* Establezco un espacio inferior para separarlo del elemento que se coloque debajo */
+}
+header{
+	position: fixed; /* Fijo el header para que cuando haga scroll fluya con la página */
+	top: 0; /* Lo pego a la parte superior de la ventana */
+	right: 0; /* Lo pego a la derecha de la ventana */
+	left: 0; /* Lo pego a la izquierda de la ventana */
+	display: flex; /* Posiciono los elementos del header en una caja flexible en horizontal (teniendo en cuenta que el valor por defecto de "flex-direction" es "row") */
+	justify-content: space-between; /* Separo los elementos para que se me peguen a los laterales */
+	align-items: center; /* Centro los elementos en función a "y", es decir, según la altura del header */
+	padding: 0 100px; /* Separo los elementos, nada arriba y abajo, y 100px a los laterales */
+	height: 70px; /* Le doy una altura al header */
+	background-color: #eee; /* Le pongo un color de fondo al header */
+	z-index: 1; /* Esto posiciona el header por encima de cualquier elemento para que el contenido de las secciones no se superponga a él */
+}
+header img{ /* Le doy un alto a la imagen del header, que es el logo de la web */
+	height: 40px;
+}
+header ul{ /* Posiciono la lista del menú del header en horizontal y elimino los puntos de la lista (su estilo por defecto) */
+	display: flex;
+	list-style: none;
+}
+header li:not(:last-child){ /* Pongo un margen a la derecha de cada elemento del menú, menos en el último porque no tiene ningún elemento a su derecha */
+	margin-right: 40px;
+}
+header nav a,footer nav a{ /* Tanto a los enlaces del menú de navegación del header como del footer, les quito el subrayado que viene por defecto y les adjudico un color y un tamaño de letra */
+	text-decoration: none;
+	color: #2F2F30;
+	font-size: 1.3em;
+}
+header nav a:hover,footer nav a:hover,.activa{ /* Cuando el cursor enté encima de cada uno de los enlaces del menú, el texto cambiará de color a un gradiente. También se ha añadido la clase activa para que cambie el color del enlace del navegador del header y del footer cuando se navegue a una página */
+    background-image: linear-gradient(to left,#DD6E41,#9888BF);
+ 	-webkit-background-clip: text; 
+  	color: transparent;  
+}
+.abrir, .cerrar{ /* Para que el menú hamburguesa y la "X" que cierra el menú no se vean hasta que la pantalla no sea menor que la indicada en el responsive */
+	display: none;
+}
+footer{
+	display: flex; /* Posiciono los elemetos del footer en horizontal */
+	justify-content: space-between; /* Distribuyo los elementos uniformemente: al principio, en el centro y al final del contenedor flex */
+	align-items: center;  /* Centro los elementos en función a "y", es decir, según la altura del footer */
+	padding: 0 100px; /* Separo los elementos, nada arriba y abajo, y 100px a los laterales */
+	height: 220px; /* Le doy una altura al footer */
+	background-color: #eee; /* Pongo un color de fondo para el footer */
+}
+footer ul{ /* Elimino los puntos de la lista que salen por defecto */
+	list-style: none;
+}
+footer li:not(:last-child){ /* Pongo un margen debajo de cada elemento del menú del header, menos en el último porque no tiene ningún elemento debajo */
+	margin-bottom: 10px;
+}
+footer .redes{ /* Posiciono los iconos de las redes sociales en horizontal */
+	display: flex;
+}
+footer .redes a{ /* Estilizo cada uno de los enlaces */
+	height: 40px; /* Le doy un alto */
+	width: 40px; /* Le doy lo mismo de ancho que de alto para hacer un cuadrado */
+	border-radius: 50%; /* Redondeo los bordes a un 50% para que me quede un círculo perfecto */
+	background-color: #2F2F30; /* Le pongo un color de fondo */
+	position: relative; /* Lo posiciono en "relative" para despues posicionar en "absolute" el icono que corresponda en relación a este elemento  */
+}
+footer .redes a:not(:last-child){ /* Pongo un margen a la derecha de cada enlace, menos en el último porque no tiene ningún elemento a su derecha */
+	margin-right: 10px;
+}
+footer .redes a:hover{ /* Cambio el color de fondo del enlace al poner el cursor encima */
+	background: linear-gradient(to left,#DD6E41,#9888BF);
+}
+footer .redes img{
+	position: absolute; /* Posiciono los iconos en función del elemento inmediato superior con "position: relative" */
+	top: 10px; /* Lo separo 10px por arriba */
+	left: 10px; /* Lo separo 10px por la izquierda */
+	height: 20px; /* Le doy una altura al icono */
+}
+.contacto{ /* Alineo a la derecha el widget de "Contacto" */
+	text-align: right;
+}
+.contacto h3{ /* Le doy un tamaño al título y un margen inferior para separarlo del elemento que vaya debajo */
+	font-size: 1.2em;
+	margin-bottom: 10px;
+}
+.contacto p{ /* Cambio el tamaño de letra de los párrafos del widget de contacto */
+	font-size: 1.1em;
+}
+.contacto p:not(:last-child){ /* Separo los párrafos por abajo del widget de contacto menos del último */
+	margin-bottom: 5px;
+}
+.contacto span{ /* Pongo en negrita el texto en "span" del widget de contacto */
+	font-weight: bold;	
+}
+
+/* Fin general para todas las páginas. */
+
+/* A partir de aquí no voy a describir todas las propiedades, pues ya ha quedado claro para que sirven en las líneas anteriores */
+
+/* Página Inicio --> index.html */
+
+.seccion1-inicio{ /* Estilizo la 1ª sección de la página */
+	background-image: url("../img/sobre-mi.jpg"); /* Pongo una imagen de fondo */
+ 	background-size: cover; /* Para que la imagen cubra todo el espacio de la sección */
+ 	background-position: center; /* Posiciono la imagen al centro */
+	padding: 100px 100px; /* Separo los elementos 60px arriba y abajo y 100px a los laterales */
+}
+.seccion1-inicio h1{ /* Le doy un tamaño al título de la sección y pongo un espacio por abajo */
+	font-size: 5em;
+	margin-bottom: 40px;
+}
+.seccion1-inicio h1 span{ /* Cambio el color del texto que está dentro del "span" del H1 */
+	background-image: linear-gradient(to left,#DD6E41,#9888BF);
+ 	-webkit-background-clip: text; 
+  	color: transparent; 
+}
+.boton{ /* Estilizo los elementos con la clase "boton" */
+	display: inline-block;
+	background: linear-gradient(to left,#DD6E41,#9888BF);
+	padding: 15px 25px;
+	border-radius: 30px;
+	text-decoration: none;
+	font-size: 1.3em;
+	color: white;
+	transition: transform 0.5s; /* Tiempo que tardará en cambiar la propiedad "transform" indicada en ".boton:hover" */
+}
+.boton:hover{ /* Estilizo el botón cuando el cursor esté encima */
+	background: transparent;
+	box-shadow: inset 0 0 0 2px #2F2F30; /* Le he puesto un borde de 2px con esta propiedad para que me lo coloque por dentro del elemento */
+	font-weight: bold;
+	color: #2F2F30;
+	transform: scale(0.9); /* Escalo el botón a un tamaño 0.9 veces el inicial */
+}
+.seccion2-inicio,.seccion3-inicio,.seccion4-inicio{ /* Establezco un padding a la 2ª,3ª y 4ª sección de la página */
+	padding: 60px 100px;
+}
+.cartas{ /* Distribuyo el espacio de las cartas de la 2ª sección */
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.carta{ /* Estilizo y distribuyo el contenido de cada carta */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	border-radius: 30px;
+	background-color: #eee;
+	padding: 30px;
+	text-align: center;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3); /* Pongo una sombra exterior a las cartas con una expansión de 20px y un color negro con opacidad al 30% */
+}
+.carta img{ /* Le doy un tamaño y un margen inferior al icono de la carta */
+	height: 100px;
+	margin-bottom: 30px;
+}
+.carta ul{ /* Estilizo la lista del interior de la carta */
+	border-top: 1px solid #999; /* Genero una linea superior para separar el contenido */
+	list-style: none;
+	padding-top: 20px;
+	width: 100%;
+	font-size: 1.3em;
+}
+.carta h4{ /* Estilizo el título de la carta */
+	font-size: 1em;
+	text-transform: uppercase;
+}
+.carta h1::after{ /* Añado el símbolo de euro con un pseudoelemento después del título que contiene el precio */
+	content: "€";
+}
+.carta p{ /* Separo los párrafos de la carta */
+	margin-bottom: 20px;
+}
+.carta li:not(:last-child){ /* Separo por abajo los elementos de la lista menos el último */
+	margin-bottom: 10px;
+}
+.destacado{ /* Clase creada para la carta que contiene el servicio más destacado */
+	background: linear-gradient(to left,#DD6E41,#9888BF);
+	margin: 0 50px;
+}
+.destacado h1,.destacado h4,.destacado p,.destacado li{ /* Cambio el color de los textos de la clase "destacado" */
+	color: #fff;
+}
+.destacado ul{
+	border-top: 1px solid #fff; /* Genero una linea superior de color blanco para separar el contenido */
+}
+.seccion3-inicio{ /* Estilizo la 3ª sección de la página */
+	background-image: url("../img/separador.jpg"); /* Pongo una imagen de fondo */
+ 	background-size: cover; /* Para que la imagen cubra todo el espacio de la sección */
+}
+form{ /* Estilizo el formulario que se encuentra en la 4ª sección de la página "Inicio" y en la página "Contacto" */
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap; /* Indica que puede haber cambio de línea. Los elementos flex aparecen colocados en varias líneas */
+	width: 100%;
+	margin: 0 auto; /* Centro el formulario en el centro */
+}
+input,textarea{ /* Establezco una tipografía para los textos de las celdas del formulario */
+	font-family: monospace;
+}
+input[type="text"],textarea{ /* Estilizo las celdas del formulario */
+	padding: 10px;
+	border: 1px solid #2F2F30;
+	border-radius: 30px;
+	width: calc(50% - 26px);
+	text-align: center;
+	font-size: 1.2em;
+	color: #2F2F30;
+}
+input[type="text"]:nth-child(3), textarea{ /* Cambio el ancho y el margen superior de la celda del e-mail y del mensaje */
+	margin-top: 10px;
+	width: 100%;
+}
+textarea{
+	margin-bottom: 20px; /* Separo 20px la celda del mensaje del botón de "enviar" */
+	resize: none; /* Para que no se pueda redimensionar el cuadro de texto del mensaje */
+}
+input[type="submit"]{ /* Estilizo el botón de enviar del formulario */
+	border: 0; /* Le quito el borde que viene por defecto */
+	font-size: 1.2em;
+	color: white;
+	margin: 0 auto;
+}
+input[type="submit"]:hover{ /* Estilizo el texto para cuando el cursor esté encima */
+	color: #2F2F30;
+	font-weight: bold;
+	cursor: pointer;
+}
+input::placeholder,textarea::placeholder{ /* Le doy un color y opacidad al 50% al placeholder */
+	color: #2F2F30;
+	opacity: 0.5;
+}
+
+/* Fin Página Inicio */
+
+/* Página Sobre Mí */
+
+.seccion1-sobre-mi{ /* Pongo el padding de la sección */
+	padding: 60px 100px;
+}
+.seccion1-sobre-mi div{
+	width: 70%; /* El contenedor ocupará el 70% del ancho de su padre (.seccion1-sobre-mi) */
+	margin: 0 auto; /* Pongo el contenedor en el centro */
+}
+.seccion1-sobre-mi h1{ /* Estilizo el título */
+	font-size: 3em;
+	margin-bottom: 40px;
+}
+.seccion1-sobre-mi p{ /* Estilizo los párrafos */
+	font-size: 1.3em;
+	line-height: 25px;
+	margin-bottom: 20px;
+}
+.seccion1-sobre-mi img{ /* Establezco el ancho de las imagenes y pongo padding para separarlo del texto */
+	width: 100%;
+	margin: 10px 0 30px;
+}
+
+/* Fin Página Sobre Mí */
+
+/* Página Proyectos */
+
+.galeria{ /* Clase aplicada al "div" que contiene todas las iámgenes de la galería */
+	width: calc(100% - 200px); /* Le resto 200px para respetar el padding de 100px por cada lado */
+	margin: 50px auto;
+	display: grid; /* Para trabajar más cómodo el espacio de la galería con una cuadrícula */
+	grid-template-columns: repeat(4, auto); /* 4 columnas del mismo ancho repartidas en el espacio horizontal establecido por la propiedad "width" */
+	grid-gap: 10px; /* Espaciado entre las columnas y las filas */
+}
+.galeria a{ /* Hace referencia a cada uno de los cuadros que contienen las imagenes y el cuadro de texto. Le pongo "relative" para que haga de padre del "div" que contiene información de la imagen, el cual llevará "position: absolute" */
+	position: relative;
+}
+.galeria img{
+	
+}
+.galeria div{ /* Cuadro de texto con información de la imagen */
+	display: none; /* Escondo el cuadro de texto */
+	position: absolute; /* Para posicionarlo en referencia a su padre (.galeria a) */
+	text-align: center; /* Centro los textos */
+	/* Posiciono el cuadro de texto en el centro de la imagen */
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.galeria h3{
+	font-size: 2.5vw; /* Pongo la medida en vw para que fluya a medida que la pantalla sea más pequeña */
+	text-transform: capitalize; /* La primera letra de cada palabra en mayúscula */
+	margin-bottom: 20px;
+	/* Le pongo un color gradiente al título del cuadro de texto */
+	background-image: linear-gradient(to left,#DD6E41,#9888BF);
+ 	-webkit-background-clip: text; 
+  	color: transparent;
+ }
+ .galeria p{ /* Estilizo el párrafo */
+	font-size: 1vw;
+ 	font-weight: bold;
+ 	text-transform: uppercase;
+ }
+.galeria a:hover div{ /* Cuando paso el cursor por encima de la imagen, aparece el cuadro de texto anterior */
+	display: block;
+}
+.galeria img{ /* Establezco el tamaño de las imágenes y aplico un tiempo de transición para que cambie la opacidad (siguiente regla) */
+	display: block;
+	width: 100%;
+	transition: opacity 0.7s;
+}
+.galeria a:hover img{ /* Cuando pasa el ratón por encima de los enlaces, las imágenes pasarán a verse con un 20% de opacidad */
+	opacity: 20%;
+}
+.modal{ /* Clase aplicada a la caja de luz al clicar encima de una imagen */
+	position: fixed; /* La posiciono en función de la ventana del navegador */
+	/* Hago que ocupe toda la ventana, de alto y de ancho */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.7); /* Pongo un color de fondo con opacidad para que se vea lo que hay detrás */
+	display: none; /* Lo escondo. Su funcionalidad está descrita en el script de la página "Proyectos" */
+	/* Coloco los elementos en el centro de la pantalla */
+	justify-content: center;
+	align-items: center;
+	z-index: 2; /* Esto posiciona las imágenes de caja de luz por encima de cualquier elemento, incluido el header, al que le habíamos puesto "z-index: 1". Por eso ahora ponemos "z-index: 2;" */
+}
+.visible{ /* Clase que se añade al "div" que contiene la modal mediante JavaScript para que la esta sea visible */
+	display: flex;
+}
+.modal a{ /* Estos enlaces hacen referencia a las flechas para pasar las imágenes */
+	color: white;
+	text-decoration: none;
+	font-size: 6em;
+	margin: 0 10px;
+}
+.modal img{ /* Establezco el alto de la imagen modal */
+		height: 70%;
+	}
+
+/* Fin Página Proyectos */
+
+/* Responsive */
+
+@media screen and (max-width: 1000px){ /* Reglas para cuando la ventana o pantalla del dispositivo tenga un ancho máximo de 1000px */
+	.cartas{
+		flex-direction: column; /* Direcciono las cartas de la sección de servicios en columnas */
+		width: 50% /* Pra que ocupen la mitad del ancho de la pantalla */
+		margin: 0 auto; /* Para centrarlo horizontalmente */
+	}
+	.destacado{ /* Quito el margen lateral y pongo margen superior para separar las cartas */
+		margin: 50px 0;
+	}
+	.seccion1-sobre-mi div{ /* Cambio el ancho del "div" que contiene la información de la página "Sobre mi" */
+		width: 80%;
+	}
+	.galeria{ /* Cambio el número de columnas de la galería de la página "Proyectos" */
+	grid-template-columns: repeat(3, auto);
+	}
+	.galeria h3{
+		font-size: 3vw; /* Cambio el tamaño de letra */
+	 }
+	 .galeria p{ /* Cambio el tamaño de letra */
+		font-size: 1.5vw;
+	 }
+}
+@media screen and (max-width: 850px){ /* Reglas para cuando la ventana o pantalla del dispositivo tenga un ancho máximo de 850px */
+	header,footer{ /* Ahora el padding lateral del header y del footer es de 50px */
+		padding: 0 50px;
+	}
+	header nav{ /* Cambio el estilo del navegador del header para el menú hamburguesa */
+		position: fixed;
+		top: 0;
+		right: -258.66px; /* Escondo a la derecha el menú */
+		padding: 90px 80px 100vh 50px;
+		background-color: #eee;
+		transition: right 0.8s; /* Establezco un tiempo de 0.8s para cuando la propiedad "rigth" cambie a 0 en la siguiente regla ".desplegado" */
+	}
+	.desplegado{ /* Clase que se añade al navegador del header cuando se pinche en el botón de hamburguesa (funcionalidad codificada en el archivo .js) */
+		right: 0;
+	}
+	header ul{ /* Cambio la visualizacion de la lista del navegador a "block" (anteriormente estaba en "flex") */
+		display: block;
+	}
+	header li:not(:last-child){ /* Cambio los márgenes de los elementos de la lista del navegador, excepto del ultimo elemento de la lista */
+		margin-right: 0;
+		margin-bottom: 30px;
+	}
+	header nav a{ /* Aumento el tamaño de letra de los enlaces del navegador */
+		font-size: 2em;
+	}
+	.abrir{ /* Clase que contiene el botón de hamburguesa y despliega el menú */
+		display: block; /* Para que sea visible, ya que antes estaba en "display: none" */
+		width: 25px; /* Ancho del botón */
+	}
+	.abrir span{ /* Cada una de las líneas del botón de hamburguesa */
+		display: block; /* "span" por defecto esta en "display: inline", lo cambio a "block" para que me ocupe el ancho de su padre */
+		height: 3px; /* Alto de cada una de las líneas */
+		background-color: #2F2F30;
+	}
+	.abrir span:not(:last-child){ /* Añado un margen inferior a las líneas menos a la última */
+		margin-bottom: 5px;
+	}
+	.cerrar{ /* Clase que contiene la "X" que cierra el menú desplegado */
+		display: block; /* Para que sea visible, ya que antes estaba en "display: none" */
+		position: absolute; /* Para posicionarlo a la distancia que deseo */
+		top: 20px;
+		right: 50px;
+	}
+	footer nav{ /* En este ancho de pantalla dejará de verse la navegación en el footer */
+		display: none;
+	}
+	.seccion1-inicio,.seccion4-inicio,.seccion1-sobre-mi{ /* El padding de las secciones pasa a ser de 50px por todos los lados */
+		padding: 50px;
+	}
+	.seccion1-inicio h1{ /* Cambio el tamaño al título de la sección */
+		font-size: 4em;
+	}
+	.seccion2-inicio{ /* Esta sección tiene 80px de padding por cada lado porque las cartas tienen 30px de padding */
+		padding: 50px 80px;
+	}
+	.seccion1-sobre-mi div{ /* Cambio el ancho del "div" que contiene la información de la página "Sobre mi" */
+		width: 100%;
+	}
+	.galeria{ /* La galería de la página "Proyectos" pasa a tener un ancho del 100% menos 50px de cada lado, que sería el padding */
+		width: calc(100% - 100px);
+	}
+	.modal img{ /* Cambio el alto de la imagen modal */
+		height: 60%;
+	}
+	.modal a{ /* Cambio el tamaño de las flechas que pasan las imágenes cuando la modal está activa */
+		font-size: 4em;
+	}
+}
+@media screen and (max-width: 700px){ /* Reglas para cuando la ventana o pantalla del dispositivo tenga un ancho máximo de 700px */
+	footer{
+		flex-direction: column; /* Cambio la dirección de los elementos del footer */
+		justify-content: space-evenly; /* Aplico una separación equidistante de los elementos */
+		padding: 0; /* Quito el padding */
+		height: 300px;
+	}
+	.contacto h3,.contacto p{ /* Alineo al centro el título y los párrafos del widget de contacto del footer */
+		text-align: center;
+	}
+	.seccion1-sobre-mi h1{ /* Cambio el tamaño del H1 de la página "Sobre mi" */
+		font-size: 2.5em;
+	}
+	.galeria{ /* Cambio el número de columnas de la galería de la página "Proyectos" */
+		grid-template-columns: repeat(2, auto);
+	}
+	.galeria h3{
+		font-size: 4vw; /* Cambio el tamaño de letra */
+		margin-bottom: 10px;
+	 }
+	 .galeria p{ /* Cambio el tamaño de letra */
+		font-size: 2.5vw;
+	 }
+	.modal img{
+		height: auto; /* Cambio el alto de la imagen modal a "auto" para que no se me deformen las imágenes que no son cuadradas */
+		width: 80%; /* Cambio el ancho de la imagen modal */
+	}
+	.modal a{ /* Cambio el tamaño y el margen de las flechas que pasan las imágenes cuando la modal está activa */
+		font-size: 3em;
+		margin: 0 5px;
+	}
+}
+@media screen and (max-width: 600px){ /* Reglas para cuando la ventana o pantalla del dispositivo tenga un ancho máximo de 600px */
+	.galeria{ /* Cambio el número de columnas de la galería de la página "Proyectos" */
+	grid-template-columns: repeat(2, auto);
+	}
+}
+@media screen and (max-width: 500px){ /* Reglas para cuando la ventana o pantalla del dispositivo tenga un ancho máximo de 500px */
+	.galeria{ /* Cambio el número de columnas de la galería de la página "Proyectos" */
+	grid-template-columns: repeat(1, auto);
+	}
+	.galeria h3{
+		font-size: 7vw; /* Cambio el tamaño de letra */
+		margin-bottom: 20px;
+	 }
+	 .galeria p{ /* Cambio el tamaño de letra */
+		font-size: 3.5vw;
+	 }
+}
